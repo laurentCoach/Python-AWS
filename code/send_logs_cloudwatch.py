@@ -7,6 +7,7 @@ import time
 
 client = boto3.client("logs")
 
+# Create log_group
 response = client.create_log_group(
     logGroupName='your_group',
     kmsKeyId='string',
@@ -15,6 +16,7 @@ response = client.create_log_group(
     }
 )
 
+# Create log_stream
 response = client.create_log_stream(
     logGroupName='your_group',
     logStreamName='your_stream'
