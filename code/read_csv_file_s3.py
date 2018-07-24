@@ -4,6 +4,8 @@ Read all CSV file in s3, except METADATA
 
 # Import library
 import boto3
+import pandas as pd
+import io
 
 # Connexion AWS
 session = boto3.Session()
