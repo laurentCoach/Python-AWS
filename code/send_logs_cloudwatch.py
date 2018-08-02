@@ -5,6 +5,10 @@ Send logs in AWS CloudWatch
 import boto3
 import time
 
+# Define variables
+your_group = 'group_name'
+your_stream = 'stream_name'
+
 client = boto3.client("logs")
 
 # Create log_group
@@ -29,7 +33,7 @@ def get_time():
 
 # Initialize function to get a new token
 def sequencetoken():
-    logdescribe = btlog.describe_log_streams(logGroupName=LOG_GROUP,logStreamNamePrefix=LOG_STREAM)
+    logdescribe = btlog.describe_log_streams(logGroupName=your_group,logStreamNamePrefix=your_stream)
     logStreams = logdescribe['logStreams']
     logStream = logStreams[0]
     sequenceToken = logStream['uploadSequenceToken']
