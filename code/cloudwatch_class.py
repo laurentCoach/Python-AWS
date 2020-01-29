@@ -49,12 +49,9 @@ class _CloudWatch:
                 ]
             )
         except ClientError as ex:
-            print("########################")
             error = ex.response['Error']['Message']
             next_token = error.split()
             next_token = next_token[-1] # Get the next token
-            print(next_token)
-            print("########################")
             response = self.client.put_log_events(
                 logGroupName=self.group,
                 logStreamName=self.stream,
@@ -82,12 +79,9 @@ class _CloudWatch:
                 ]
             )
         except ClientError as ex:
-            print("########################")
             error = ex.response['Error']['Message']
             next_token = error.split()
             next_token = next_token[-1] # Get the next token
-            print(next_token)
-            print("########################")
             response = self.client.put_log_events(
                 logGroupName=self.group,
                 logStreamName=self.stream,
