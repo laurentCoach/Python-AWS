@@ -8,6 +8,11 @@ from opensearchpy.helpers import bulk
 import requests
 import unicodedata
 
+# 1 - Create Index
+# 2 - Create Mapping
+# 3 - Add data
+# 4 - Enjoy
+
 
 try:
   # Connexion
