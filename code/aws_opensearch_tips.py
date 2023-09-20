@@ -75,8 +75,20 @@ response = client.delete_by_query(
         }
     )
 
-
 # Delete index
 client.indices.delete(index='index-dev')
 print('Index properly deleted')
 
+# Create Mapping
+mapping = {
+    'properties': {
+        'your_field.param_1' : {'type': 'date', "format" : "yyyy-MM-dd HH:mm:ss.SSS"},
+        'your_field.param_2' : {'type': 'date', "format" : "yyyy-MM-dd HH:mm:ss.SSS"}
+        }
+    }
+
+# Create the mapping
+response = client.indices.put_mapping(
+    index='index-dev',
+    body=mapping
+)
