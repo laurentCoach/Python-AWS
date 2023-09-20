@@ -36,6 +36,20 @@ print('\nCreating index:')
 print(response)
 time.sleep(30)
 
+# Create Mapping
+mapping = {
+    'properties': {
+        'your_field.param_1' : {'type': 'date', "format" : "yyyy-MM-dd HH:mm:ss.SSS"},
+        'your_field.param_2' : {'type': 'date', "format" : "yyyy-MM-dd HH:mm:ss.SSS"}
+        }
+    }
+
+# Create the mapping
+response = client.indices.put_mapping(
+    index='index-dev',
+    body=mapping
+)
+
 # Insert data
 body = {}  #Json Document
 client.index(index="index-dev", body=body)
@@ -84,16 +98,4 @@ response = client.delete_by_query(
 client.indices.delete(index='index-dev')
 print('Index properly deleted')
 
-# Create Mapping
-mapping = {
-    'properties': {
-        'your_field.param_1' : {'type': 'date', "format" : "yyyy-MM-dd HH:mm:ss.SSS"},
-        'your_field.param_2' : {'type': 'date', "format" : "yyyy-MM-dd HH:mm:ss.SSS"}
-        }
-    }
 
-# Create the mapping
-response = client.indices.put_mapping(
-    index='index-dev',
-    body=mapping
-)
