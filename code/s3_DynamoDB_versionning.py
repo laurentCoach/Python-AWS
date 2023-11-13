@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Initialize the DynamoDB resource
 dynamodb = boto3.resource('dynamodb')
-table_name = 'YourTable'  # Replace with your DynamoDB table name
+table_name = 'table_name'  # Replace with your DynamoDB table name
 table = dynamodb.Table(table_name)
 
 def lambda_handler(event, context):
@@ -27,7 +27,9 @@ def lambda_handler(event, context):
             dynamodb_item = {
                 'Filename': key,
                 'VersionId': version_id,
-                'Timestamp': current_time
+                'Timestamp': current_time,
+                'Bucket': bucket,
+                'Key': key
             }
             # Insert the data into DynamoDB
             table.put_item(Item=dynamodb_item)
